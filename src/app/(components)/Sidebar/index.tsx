@@ -4,7 +4,6 @@ import { setIsSidebarCollapsed } from "@/state";
 import {
   Bell,
   Calendar,
-  Home,
   HomeIcon,
   LogOut,
   LucideIcon,
