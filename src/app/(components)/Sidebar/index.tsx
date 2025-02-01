@@ -9,6 +9,7 @@ import {
   LogOut,
   LucideIcon,
   Menu,
+  Settings,
   Star,
   Ticket,
   User,
@@ -157,7 +158,7 @@ const Sidebar = () => {
         />
       <SidebarLink
           href="/dashboard"
-          icon={Home}
+          icon={Settings}
           label="Dashboard"
           isCollapsed={isSidebarCollapsed}
         />
