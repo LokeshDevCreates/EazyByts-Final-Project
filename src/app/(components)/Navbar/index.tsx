@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
-import { Menu, Moon, Sun } from "lucide-react";
-import { Bell } from "lucide-react";
+import { Menu, Moon, Sun, Bell } from "lucide-react";
+import img from "../../../../public/images/eazylogo.jpg";
 
 const NotificationButton = ({
   onClick,
@@ -22,7 +23,7 @@ const NotificationButton = ({
     >
       <Bell className="w-6 h-6 text-gray-700" />
       {notificationCount > 0 && (
-        <span className="absolute top-0 right-0 flex items-center justify-center w-3 h-3 text-xs font-semibold text-transparent bg-red-500 rounded-full -mr-1 -mt-1">
+        <span className="absolute top-0 right-0 flex items-center justify-center w-3 h-3 text-xs font-semibold text-white bg-red-500 rounded-full -mr-1 -mt-1">
           {notificationCount > 9 ? "9+" : notificationCount}
         </span>
       )}
@@ -48,7 +49,7 @@ const Navbar = () => {
   const router = useRouter();
 
   const handleNotificationClick = () => {
-    router.push("/notifications"); 
+    router.push("/notifications");
   };
 
   return (
@@ -83,10 +84,12 @@ const Navbar = () => {
           <hr className="w-0 h-7 border border-solid border-l border-gray-300 mx-3" />
 
           <div className="flex items-center w-20 h-20 cursor-pointer rounded-full">
-            <img
-              src="https://media.licdn.com/dms/image/v2/D560BAQG5AwxGpXkAtA/company-logo_200_200/company-logo_200_200/0/1702810266648/eazybyts_logo?e=2147483647&v=beta&t=eH9dghYGgpAFDR365bcbAkYmSZPpma6dLFXgmk47HPs"
+            <Image
+              src={img}
               alt="My Logo"
-              className="w-full h-full object-cover rounded-full"
+              width={80}
+              height={80}
+              className="object-cover rounded-full"
             />
           </div>
           <span className="font-semibold text-3xl">EazyByts</span>

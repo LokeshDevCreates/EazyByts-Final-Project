@@ -2,6 +2,13 @@
 
 import React, { useState } from "react";
 import { Heart, X } from "lucide-react";
+import Image from "next/image"; // Importing Image from Next.js
+
+const img1 = "/images/pic16.jpg";
+const img2 = "/images/pic6.jpg";
+const img3 = "/images/pic17.jpg";
+const img4 = "/images/pic11.jpg";
+const img5 = "/images/pic7.jpg";
 
 // Favorite Event Card Component
 const FavoriteEventCard = ({
@@ -15,9 +22,11 @@ const FavoriteEventCard = ({
 }) => {
   return (
     <div className="relative rounded-lg shadow-lg overflow-hidden bg-white border border-gray-300 hover:shadow-xl transition-all transform hover:scale-105">
-      <img
+      <Image
         src={event.image}
         alt={event.title}
+        width={600}
+        height={240}
         className="w-full h-40 object-cover rounded-t-lg cursor-pointer"
         onClick={onViewDetails} // Clicking on the image opens the details modal
       />
@@ -48,36 +57,31 @@ const FavoritesPage = () => {
       title: "Concert in the Park",
       description: "An amazing open-air concert with live bands and food trucks.",
       date: "February 15, 2025",
-      image:
-        "https://media.istockphoto.com/id/458119657/photo/tentertainment-music-festival-england.jpg?s=612x612&w=0&k=20&c=HeOd_zmNAS3QQptcZrypASP9eZgu-hQNKSY7SrC_3rw=",
+      image: img1,
     },
     {
       title: "Tech Conference 2025",
       description: "The biggest tech conference with the latest trends in the industry.",
       date: "March 5, 2025",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsbP1SjH7EkE1TXIwAcnjd0wZOTem0iIlysA&s",
+      image: img2,
     },
     {
       title: "Movie Night Under the Stars",
       description: "A cozy movie night with classic films, popcorn, and blankets.",
       date: "April 3, 2025",
-      image:
-        "https://liveheadwaters.com/wp-content/uploads/2018/11/movie-under-the-stars.jpg",
+      image: img3,
     },
     {
       title: "Charity Fun Run 2025",
       description: "Join us for a 5k run to support local charities.",
       date: "May 10, 2025",
-      image:
-        "https://images.squarespace-cdn.com/content/v1/5ec49b013663ea17f76bf531/1620267193015-01AUNGLIQS7PZSI4MTPM/Hero+Image+-+Smaller.png",
+      image: img4,
     },
     {
       title: "Food Festival Extravaganza",
       description: "Taste the best local and international dishes from top chefs.",
       date: "June 18, 2025",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlniVFd_dXLbpBlmBzUDFKTwIIbH8vNI2r1w&s",
+      image: img5,
     },
   ]);
 
@@ -139,9 +143,11 @@ const FavoritesPage = () => {
                   <X size={24} />
                 </button>
               </div>
-              <img
+              <Image
                 src={selectedFavorite.image}
                 alt={selectedFavorite.title}
+                width={600}
+                height={240}
                 className="w-full h-64 object-cover"
               />
               <div className="p-5">

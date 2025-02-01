@@ -1,5 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+
+import React, { useState } from "react";
+import Image from "next/image";
+
+const img1 = "/images/pic1.jpg";
+const img2 = "/images/pic2.jpg";
+const img3 = "/images/pic3.jpg";
 
 interface Event {
   id: number;
@@ -19,9 +25,10 @@ const events: Event[] = [
     description: "Watch thrilling basketball action live.",
     date: "2025-08-10",
     location: "New York, USA",
-    category: "Technology",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkNhfskvsWFfwLjJ6Jxng7sZz_Bol9WDRvkA&s",
-    details: "The championship features the best teams competing for the title. Get ready for an action-packed day!"
+    category: "Sports",
+    image: img1,
+    details:
+      "The championship features the best teams competing for the title. Get ready for an action-packed day!",
   },
   {
     id: 8,
@@ -29,9 +36,10 @@ const events: Event[] = [
     description: "Cheer for your favorite team in a lively atmosphere.",
     date: "2025-09-15",
     location: "Paris, France",
-    category: "Technology",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxa6jA0D0R6rf0-lw3gkvhXIkKuVwBVwkCag&s",
-    details: "Join fans from around the world to watch the finals on a big screen. Food and beverages will be available."
+    category: "Sports",
+    image: img2,
+    details:
+      "Join fans from around the world to watch the finals on a big screen. Food and beverages will be available.",
   },
   {
     id: 9,
@@ -40,10 +48,10 @@ const events: Event[] = [
     date: "2025-10-05",
     location: "San Francisco, USA",
     category: "Technology",
-    image: "https://www.reviewjournal.com/wp-content/uploads/2019/10/12850877_web1_G2E-EXPO-DAY-ONE-OCT16-19-051.jpg",
-    details: "Experience cutting-edge gaming setups, meet developers, and enjoy exclusive previews of upcoming games."
+    image: img3,
+    details:
+      "Experience cutting-edge gaming setups, meet developers, and enjoy exclusive previews of upcoming games.",
   },
-  // Add more events here
 ];
 
 const Bookings: React.FC = () => {
@@ -52,10 +60,10 @@ const Bookings: React.FC = () => {
 
   const handleEventSelect = (eventId: number) => {
     if (selectedEventId === eventId) {
-      setSelectedEventId(null); // Deselect event if it's already selected
+      setSelectedEventId(null);
     } else {
       setSelectedEventId(eventId);
-      setIsBooked(false); // Reset booking status when a new event is selected
+      setIsBooked(false);
     }
   };
 
@@ -66,7 +74,9 @@ const Bookings: React.FC = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto p-4 sm:p-6 bg-white dark:bg-gray-800">
-      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800 dark:text-white">Event Bookings</h1>
+      <h1 className="text-3xl font-semibold text-center mb-6 text-gray-800 dark:text-white">
+        Event Bookings
+      </h1>
 
       {/* Event List */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -77,22 +87,39 @@ const Bookings: React.FC = () => {
           >
             {/* Event Card */}
             <div onClick={() => handleEventSelect(event.id)}>
-              <img src={event.image} alt={event.title} className="w-full h-48 object-cover rounded-t-lg" />
+              <Image
+                src={event.image}
+                alt={event.title}
+                width={600}
+                height={300}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
               <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{event.title}</h3>
-                <p className="text-gray-600 text-sm dark:text-gray-300">{event.date} | {event.location}</p>
-                <p className="text-gray-500 text-sm dark:text-gray-400">{event.category}</p>
-                <p className="text-gray-700 mt-2 dark:text-gray-300">{event.description}</p>
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+                  {event.title}
+                </h3>
+                <p className="text-gray-600 text-sm dark:text-gray-300">
+                  {event.date} | {event.location}
+                </p>
+                <p className="text-gray-500 text-sm dark:text-gray-400">
+                  {event.category}
+                </p>
+                <p className="text-gray-700 mt-2 dark:text-gray-300">
+                  {event.description}
+                </p>
               </div>
             </div>
 
             {/* Event Details (Visible Only for Selected Event) */}
             {selectedEventId === event.id && (
               <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-b-lg">
-                <p className="text-lg text-gray-700 dark:text-gray-100"><strong>Details:</strong> {event.details}</p>
-                {/* Booking Button */}
+                <p className="text-lg text-gray-700 dark:text-gray-100">
+                  <strong>Details:</strong> {event.details}
+                </p>
                 {isBooked ? (
-                  <p className="text-green-500 font-semibold mt-4">You have successfully booked for this event!</p>
+                  <p className="text-green-500 font-semibold mt-4">
+                    You have successfully booked for this event!
+                  </p>
                 ) : (
                   <button
                     onClick={() => handleBooking(event.id)}

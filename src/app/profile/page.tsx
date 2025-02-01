@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-
+const img ="/images/pic18.jpg";
 // Example user data
 interface User {
   name: string;
@@ -17,7 +17,7 @@ const user: User = {
   name: "Lokesh",
   email: "lokil3832@gmail.com",
   profilePicture:
-    "https://static.vecteezy.com/system/resources/previews/024/183/525/non_2x/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg",
+    img,
   bio: "Event enthusiast, loves to attend tech conferences and gaming expos!",
   upcomingEvents: ["Gaming Expo 2025", "Basketball Championship 2025"],
   pastEvents: ["Esports Tournament 2024", "Yoga and Wellness Retreat 2024"],
